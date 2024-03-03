@@ -9,11 +9,11 @@ services:
         working_dir: /app/Valuator
         command: dotnet run
         volumes:
-            - "../:/app"
+            - ".:/app"
         ports:
             - 5001:5000
         env_file:
-            - ../Valuator/.env
+            - ./Valuator/.env
         networks:
             default:
                 aliases:
