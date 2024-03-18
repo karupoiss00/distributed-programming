@@ -48,10 +48,9 @@ public class IndexModel : PageModel
 
     private static double CalculateRank(string text)
     {
-        var regexp = new Regex(@"[A-Z,a-z,А-Я,а-я]");
         double notAlphabetCharsCount = text.Aggregate(
             0,
-            (i, c) => !regexp.IsMatch(c.ToString()) ? i + 1 : i
+            (i, c) => Char.IsLetter(c) ? i : i + 1
         );
 
         return notAlphabetCharsCount == 0 
